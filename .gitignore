@@ -332,3 +332,6 @@ ASALocalRun/
 *.DS_Store
 
 out
+lib/
+*.lock
+.merlin
