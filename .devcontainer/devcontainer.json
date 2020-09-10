@@ -1,25 +1,29 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.134.0/containers/javascript-node
 {
-    "name": "ResonML Sample",
-    "dockerFile": "Dockerfile",
+	"name": "ResonML Sample",
+	"build": {
+		"dockerfile": "Dockerfile",
+		// Update 'VARIANT' to pick a Node version: 10, 12, 14
+		"args": { "VARIANT": "14" }
+	},
 
-    // Use 'appPort' to create a container with published ports. If the port isn't working, be sure
-    // your server accepts connections from all interfaces (0.0.0.0 or '*'), not just localhost.
-    "appPort": [3000],
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
 
-    // Comment out the next line to run as root instead.
-    "remoteUser": "node",
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"jaredly.reason-vscode"
+	],
+	
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [3000],
 
-    // Use 'settings' to set *default* container specific settings.json values on container create. 
-    // You can edit these settings after create using File > Preferences > Settings > Remote.
-    "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
-    },
+	// Specifies a command that should be run after the container has been created.
+	"postCreateCommand": "yarn install",
 
-    // Specifies a command that should be run after the container has been created.
-    "postCreateCommand": "yarn install",
-
-    // Add the IDs of extensions you want installed when the container is created in the array below.
-    "extensions": [
-        "jaredly.reason-vscode"
-    ]
+	// Comment out the next line to run as root instead.
+	"remoteUser": "node"
 }
