@@ -335,3 +335,5 @@ out
 lib/
 *.lock
 .merlin
+*.lock
+*.zip
